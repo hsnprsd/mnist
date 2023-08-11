@@ -1,3 +1,5 @@
+import os
+
 import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
@@ -34,9 +36,12 @@ def train():
         hidden_size=128,
         num_classes=num_classes,
     ).to(device)
-    optim = torch.optim.SGD(model.parameters(), lr=1e-3)
+    if os.environ["LOAD_MODEL"] == "1":
+        model = torch.load("model.pickle")
 
-    epochs = 10000
+    optim = torch.optim.SGD(model.parameters(), lr=5e-4)
+
+    epochs = 100000
     pbar = tqdm(range(epochs))
     losses = []
     for step in pbar:
@@ -54,6 +59,8 @@ def train():
         if step % 1000 == 0:
             acc = evaluate(model, test_images, test_labels)
             print("Accuracy: {}%".format(100 * acc))
+
+    torch.save(model, "model.pickle")
 
     plt.plot(losses)
     plt.show()
