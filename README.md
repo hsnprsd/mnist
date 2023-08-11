@@ -1,7 +1,6 @@
 # MNIST
 
 ## Models
-
 - 2 layer DNN
     - hyper params
         - epochs = 1000_000
@@ -10,3 +9,9 @@
         - lr = 5e-4
     - evaluation
         - accuracy: 91.60
+
+## Training
+```
+LOAD_MODEL=0|1 python3 main.py
+```
+Saves model to `model.pickle` file.
