@@ -8,7 +8,10 @@
         - batch size = 512
         - lr = 5e-4
     - evaluation
-        - accuracy: 91.60
+        - accuracy: ~91.5%
+- CNN
+    - evaluation
+        - accuracy: ~99%
 
 ## Training
 ```
